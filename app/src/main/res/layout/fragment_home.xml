@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <com.yandex.mapkit.mapview.MapView
+                android:id="@+id/mapview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/sliding_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/beck"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:translationY="200dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/mapview">
+
+
+        <!-- Поле ввода адреса отправления -->
+        <AutoCompleteTextView
+            android:id="@+id/et_address_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Адрес отправления"
+            android:inputType="text" />
+
+        <AutoCompleteTextView
+            android:id="@+id/et_address_for"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Адрес назначения"
+            android:inputType="text" />
+
+        <!-- Выбор типа доставки -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp"
+            android:text="Тип доставки"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spinner_delivery_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/delivery_types" />
+
+        <!-- Кнопка для создания заказа -->
+        <Button
+            android:id="@+id/btn_create_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Создать заказ" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/sliding_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/mapview" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
